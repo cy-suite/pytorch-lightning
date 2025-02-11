@@ -331,9 +331,8 @@ class MLFlowLogger(Logger):
         # log checkpoints as artifacts
         if self._log_model == "all" or self._log_model is True and checkpoint_callback.save_top_k == -1:
             self._scan_and_log_checkpoints(checkpoint_callback)
-        elif self._log_model is True:
-            if checkpoint_callback not in self._checkpoint_callbacks:
-                self._checkpoint_callbacks.append(checkpoint_callback)
+        elif self._log_model is True and checkpoint_callback not in self._checkpoint_callbacks:
+            self._checkpoint_callbacks.append(checkpoint_callback)
 
     def _scan_and_log_checkpoints(self, checkpoint_callback: ModelCheckpoint) -> None:
         # get checkpoints to be saved with associated score
