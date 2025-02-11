@@ -142,7 +142,7 @@ class MLFlowLogger(Logger):
         self.tags = tags
         self._log_model = log_model
         self._logged_model_time: dict[str, float] = {}
-        self._checkpoint_callbacks: list[ModelCheckpoint] = []
+        self._checkpoint_callbacks: Optional[list[ModelCheckpoint]] = []
         self._prefix = prefix
         self._artifact_location = artifact_location
         self._log_batch_kwargs = {} if synchronous is None else {"synchronous": synchronous}
