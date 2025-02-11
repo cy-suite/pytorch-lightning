@@ -20,13 +20,13 @@ import pytest
 
 from lightning.pytorch import Trainer
 from lightning.pytorch.callbacks import ModelCheckpoint
-from lightning.pytorch.utilities.types import STEP_OUTPUT
 from lightning.pytorch.demos.boring_classes import BoringModel
 from lightning.pytorch.loggers.mlflow import (
     _MLFLOW_AVAILABLE,
     MLFlowLogger,
     _get_resolve_tags,
 )
+from lightning.pytorch.utilities.types import STEP_OUTPUT
 
 
 def mock_mlflow_run_creation(logger, experiment_name=None, experiment_id=None, run_id=None):
@@ -436,9 +436,9 @@ def test_set_tracking_uri(mlflow_mock):
 def test_mlflow_multiple_checkpoints_top_k(mlflow_mock, tmp_path):
     """Test that multiple ModelCheckpoint callbacks with top_k parameters work correctly with MLFlowLogger.
 
-    This test verifies that when using multiple ModelCheckpoint callbacks with save_top_k,
-    both callbacks function correctly and save the expected number of checkpoints when using
-    MLFlowLogger with log_model=True.
+    This test verifies that when using multiple ModelCheckpoint callbacks with save_top_k, both callbacks function
+    correctly and save the expected number of checkpoints when using MLFlowLogger with log_model=True.
+
     """
 
     class CustomBoringModel(BoringModel):
